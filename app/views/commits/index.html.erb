@@ -1,0 +1,46 @@
+<h1>Git Board</h1>
+<table>
+<tr>
+  <th>
+    Total Commits
+  </th>
+  <th>
+    Latest Committer
+  </th>
+  <th>
+    Time Since Last
+  </th>
+</tr>
+<tr>
+  <td>
+    <%= @commits.count %>
+  </td>
+  <td>
+    <%= @latest_user.login %>
+  </td>
+  <td>
+    <%= time_ago_in_words(@latest_time) %>
+  </td>
+</tr>
+</table>
+
+<table>
+  <tr>
+  <th>
+    SHA
+  </th>
+  <th>
+    Commit Message
+  </th>
+  </tr>
+  <% @commits.each do |commit| %>
+  <tr>
+    <td>
+      <%= link_to commit.sha, commit.url %>
+    </td>
+    <td>
+      <%= commit.message %>
+    </td>
+  </tr>
+  <% end %>
+</table>
